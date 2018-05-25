@@ -15,6 +15,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+//import java.awt.Desktop.*;
 
 import java.io.*;
 import java.util.*;
@@ -23,7 +24,7 @@ import java.lang.reflect.*;
 import java.text.*;
 import java.awt.print.*;
 
-import com.apple.eawt.*;
+//import com.apple.eawt.*;
 
 public class othello2 extends Frame implements WindowListener {
 
@@ -31,7 +32,7 @@ public class othello2 extends Frame implements WindowListener {
     protected ResourceBundle resbundle;
     protected AboutBox aboutBox;
     protected PrefPane prefs;
-    private Application fApplication = Application.getApplication();
+    private Desktop fApplication = Desktop.getDesktop();
 
     protected Action newAction, openAction, printAction, saveAction, saveAsAction, legalAction;
 	
@@ -63,8 +64,8 @@ public class othello2 extends Frame implements WindowListener {
 	the_agent = new agent(the_board);
 	add(the_board);
 		
-	fApplication.setEnabledPreferencesMenu(true);
-	fApplication.addApplicationListener(new com.apple.eawt.ApplicationAdapter() 
+	//fApplication.setEnabledPreferencesMenu(true);
+	/*fApplication.addApplicationListener(new com.apple.eawt.ApplicationAdapter() 
 	{
 	    public void handleAbout(ApplicationEvent e) 
 	    {
@@ -88,7 +89,15 @@ public class othello2 extends Frame implements WindowListener {
 	    {
                 quit(e);
             }
-        });
+        });*/
+	fApplication.setAboutHandler(new java.awt.desktop.AboutHandler()
+			{
+				public void handleAbout(java.awt.desktop.AboutEvent e) {
+					if (aboutBox == null) { aboutBox = new AboutBox(); }
+					about(e);
+					//e.setHandled(true);
+				}
+			});
 	    
         setVisible(true);
     }
@@ -117,21 +126,21 @@ public class othello2 extends Frame implements WindowListener {
 	}
     }
 
-    public void about(ApplicationEvent e) 
+    public void about(java.awt.desktop.AboutEvent e) 
     {
         aboutBox.setResizable(false);
         aboutBox.setVisible(true);
         aboutBox.show();
     }
 
-    public void preferences(ApplicationEvent e) 
+    public void preferences(java.awt.desktop.AppEvent e) 
     {
         prefs.setResizable(false);
         prefs.setVisible(true);
         prefs.show();
     }
 
-    public void quit(ApplicationEvent e) 
+    public void quit(java.awt.desktop.AppEvent e) 
     {
         System.exit(0);
     }
