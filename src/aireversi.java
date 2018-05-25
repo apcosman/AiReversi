@@ -46,7 +46,7 @@ public class aireversi extends Frame implements WindowListener {
     private board the_board;
     private agent the_agent;
 	
-    othello2() 
+    aireversi() 
     {
 	setBackground(Color.lightGray);
 	setLayout(new BorderLayout());
@@ -295,7 +295,7 @@ public class aireversi extends Frame implements WindowListener {
     public void windowActivated(WindowEvent e)   { } 
     public void windowDeactivated(WindowEvent e) { }
     
-    public static void main(String args[]) { new othello2(); }
+    public static void main(String args[]) { new aireversi(); }
 }
 
 class agent
@@ -841,12 +841,12 @@ class board extends Panel
 	private square[][] grid; //the board
 	private GridBagLayout layout;
 	
-	private othello2 cont;
+	private aireversi cont;
 	
 	private int lcx = 0;
 	private int lcy = 0;
 	
-	board(othello2 cnt)
+	board(aireversi cnt)
 	{
 		setBackground(new Color(0,255,0));
 		cont = cnt;
