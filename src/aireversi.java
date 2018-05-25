@@ -85,7 +85,8 @@ public class aireversi extends Frame implements WindowListener {
                 quit(e);
             }
         });*/
-	fApplication.setAboutHandler(new java.awt.desktop.AboutHandler()
+	try {
+		fApplication.setAboutHandler(new java.awt.desktop.AboutHandler()
 			{
 				public void handleAbout(java.awt.desktop.AboutEvent e) {
 					if (aboutBox == null) { aboutBox = new AboutBox(); }
@@ -93,7 +94,9 @@ public class aireversi extends Frame implements WindowListener {
 					//e.setHandled(true);
 				}
 			});
-	    
+	} catch (UnsupportedOperationException e) {
+		System.out.println("No AboutHandler on this platform\n");
+	}
         setVisible(true);
     }
     
