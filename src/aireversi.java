@@ -1,13 +1,8 @@
 //
-//  othello2.java
-//  othello2
+//  aireversi.java
+//  AI Reversi
 //
 //  Created by Alin Cosmanescu on 3/28/05.
-//  Copyright (c) 2005 __MyCompanyName__. All rights reserved.
-//
-//	For information on setting Java configuration information, including 
-//	setting Java properties, refer to the documentation at
-//		http://developer.apple.com/techpubs/java/java.html
 //
 
 //import java.util.Locale;
@@ -26,7 +21,7 @@ import java.awt.print.*;
 
 //import com.apple.eawt.*;
 
-public class othello2 extends Frame implements WindowListener {
+public class aireversi extends Frame implements WindowListener {
 
     private Font font = new Font("serif", Font.ITALIC+Font.BOLD, 36);
     protected ResourceBundle resbundle;
@@ -56,7 +51,7 @@ public class othello2 extends Frame implements WindowListener {
 	setBackground(Color.lightGray);
 	setLayout(new BorderLayout());
 	setSize(500, 500);
-	setTitle("Alin Cosmanescu's Othello for Mac");
+	setTitle("Alin Cosmanescu's AI Reversi");
 	addWindowListener(this);
 	addMenus();
 		
